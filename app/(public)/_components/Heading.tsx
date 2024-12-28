@@ -1,5 +1,6 @@
 "use client";
-import { Button, Spinner } from "@/components";
+import { Spinner } from "@/components";
+import { buttonVariants } from "@/components/shared/Button";
 import { useConvexAuth } from "convex/react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -22,19 +23,21 @@ export const Heading = () => {
             <Spinner size="lg" />
           </div>
         )}
-        {isAuthenticated && (
-          <Button asChild>
-            <Link href="/documents">
-              Enter NNotion
-              <ArrowRight className="ml-2 h-4 w-4" />
-            </Link>
-          </Button>
+        {!isLoading && isAuthenticated && (
+          <Link href="/documents">
+            className={buttonVariants({ variant: "default" })}
+            Enter NNotion
+            <ArrowRight className="ml-2 h-4 w-4" />
+          </Link>
         )}
-        {!isAuthenticated && (
-          <Button>
+        {!isLoading && !isAuthenticated && (
+          <Link
+            href={"/sign-in"}
+            className={buttonVariants({ variant: "default" })}
+          >
             Get NNotion For Free
             <ArrowRight className="ml-2 h-4 w-4" />
-          </Button>
+          </Link>
         )}
       </div>
     </section>

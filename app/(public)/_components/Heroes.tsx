@@ -6,7 +6,7 @@ export const Heroes = () => {
         <div>
           <Image
             src="/documents.png"
-            className=" dark:hidden"
+            className="dark:hidden"
             alt="Documents"
             width={400}
             height={400}
